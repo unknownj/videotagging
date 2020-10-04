@@ -1,0 +1,24 @@
+<html>
+    <body>
+        <script
+            src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous"></script>
+        <div id="a">
+
+            hello!!
+
+        </div>
+
+        <script>
+            var i = 0;
+
+            function tick(){
+                $("#a").css({background: "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")"});
+                window.lasttick = (new Date).getTime();
+            }
+            setInterval(tick,1000);
+            $("#a").click(function(){ var thisclick = (new Date).getTime(); $("#a").html($("#a").html() + "<br/>" + (thisclick - lasttick)); })
+        </script>
+    </body>
+</html>
