@@ -19,6 +19,18 @@ LBGAnalytics.video.fix = function(){
 
 }
 
+LBGAnalytics.video.getVideoDetail = function(video){
+  return [
+    video.playerInfo.videoData.author,
+    video.playerInfo.videoData.title,
+    video.playerInfo.videoData.video_id,
+    video.playerInfo.duration
+  ].map(function(a){
+    return (a || "").toString().split("/").join(" ");
+  })
+  .join("/")
+}
+
 LBGAnalytics.video.track = function () {
 
   var $ = LBGAnalytics.$;
