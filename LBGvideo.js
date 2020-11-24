@@ -45,13 +45,13 @@ LBGAnalytics.video.track = function () {
   LBGAnalytics.video.videoList = $iframeYT.get().map(function(a){ return $(a).attr("id"); });
 
   LBGAnalytics.video.onPlayerReady = function(event){
-    console.log("Ready");
-    console.log(event);
+    console.log("load",LBGAnalytics.video.getVideoDetail(event.target));
   }
 
   LBGAnalytics.video.onPlayerStateChange = function(event){
-    console.log("State change");
-    console.log(event);
+    if(event.data == 1) console.log("play",LBGAnalytics.video.getVideoDetail(event.target));
+    if(event.data == 2) console.log("pause",LBGAnalytics.video.getVideoDetail(event.target));
+    if(event.data == 0) console.log("complete",LBGAnalytics.video.getVideoDetail(event.target));
   }
 
   window.onYouTubeIframeAPIReady = function() {
@@ -68,3 +68,6 @@ LBGAnalytics.video.track = function () {
   $.getScript("https://www.youtube.com/iframe_api");
 
 }
+
+LBGAnalytics.video.fix();
+LBGAnalytics.video.track();
